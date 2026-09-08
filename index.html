@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>replaycut - trim OBS replay buffer clips from your phone</title>
-<meta name="description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC, share the link to Discord. Open source, Windows.">
+<meta name="description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC, share the link to Discord. Free, for Windows and Linux.">
 <link rel="canonical" href="https://replaycut.de/">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#111418">
@@ -13,16 +13,30 @@
 <meta property="og:site_name" content="replaycut">
 <meta property="og:url" content="https://replaycut.de/">
 <meta property="og:title" content="replaycut - trim OBS replay buffer clips from your phone">
-<meta property="og:description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC, share the link to Discord. Open source, Windows.">
+<meta property="og:description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC, share the link to Discord. Free, for Windows and Linux.">
 <meta property="og:image" content="https://replaycut.de/assets/social.png">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="640">
 <meta property="og:image:alt" content="replaycut - clip manager for the OBS replay buffer. Trim on your phone, link in Discord.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="replaycut - trim OBS replay buffer clips from your phone">
-<meta name="twitter:description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC's GPU, share the link to Discord.">
+<meta name="twitter:description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC, share the link to Discord. Windows and Linux.">
 <meta name="twitter:image" content="https://replaycut.de/assets/social.png">
 <link rel="stylesheet" href="/styles.css">
+<script>
+// Which package the download button offers. Runs before the page is drawn,
+// so the button never says the wrong platform first. Android and ChromeOS
+// call themselves Linux and get no package, so they land in "other".
+(function () {
+  var data = navigator.userAgentData;
+  var platform = (data && data.platform) || navigator.platform || '';
+  var ua = navigator.userAgent || '';
+  var os = 'other';
+  if (/win/i.test(platform) || /Windows/i.test(ua)) { os = 'windows'; }
+  else if (!/Android|CrOS/i.test(ua) && /linux|x11/i.test(platform + ' ' + ua)) { os = 'linux'; }
+  document.documentElement.setAttribute('data-os', os);
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,8 +45,7 @@
   "description": "Self-hosted clip manager for the OBS replay buffer: trim replays in the browser from your phone or laptop, encode on the gaming PC with ffmpeg and your GPU, upload and post the link.",
   "url": "https://replaycut.de/",
   "applicationCategory": "MultimediaApplication",
-  "operatingSystem": "Windows 10, Windows 11",
-  "softwareVersion": "3.1.0",
+  "operatingSystem": "Windows 10, Windows 11, Linux",
   "downloadUrl": "https://github.com/KallistoX/replaycut/releases/latest",
   "softwareHelp": "https://github.com/KallistoX/replaycut#readme",
   "license": "https://www.gnu.org/licenses/agpl-3.0.html",
@@ -70,11 +83,15 @@
 
         <div class="cta">
           <a class="dl" id="dl" href="https://github.com/KallistoX/replaycut/releases/latest">
-            <span class="dl-main">Download for Windows</span>
+            <span class="dl-main"><span class="for-windows">Download for Windows</span><span class="for-linux">Download for Linux</span><span class="for-other">Download replaycut</span></span>
             <span class="dl-meta"><span class="dl-known"></span><span class="dl-unknown">Latest release on GitHub</span></span>
           </a>
           <div class="cta-meta">
-            <span>Windows 10/11 &middot; needs OBS and ffmpeg &middot; free and open source</span>
+            <span>Windows and Linux &middot; needs OBS and ffmpeg &middot; free and open source</span>
+          </div>
+          <div class="cta-links">
+            <a class="text-link" id="dl-windows" href="https://github.com/KallistoX/replaycut/releases/latest">Windows x64</a>
+            <a class="text-link" id="dl-linux" href="https://github.com/KallistoX/replaycut/releases/latest">Linux x64</a>
             <a class="text-link" href="https://github.com/KallistoX/replaycut/releases">All releases and checksums</a>
           </div>
         </div>
@@ -181,8 +198,8 @@
         </article>
 
         <article class="card">
-          <h3>One EXE, one click to update</h3>
-          <p>Per user, no admin rights, no service, no installer full of questions: a tray icon and a page in your browser. Every release is signed with minisign, and the built-in updater installs nothing that signature does not vouch for.</p>
+          <h3>One file, one click to update</h3>
+          <p>Per user, no admin rights, no service, no installer full of questions: a tray icon and a page in your browser, on Windows and on Linux. Every release is signed with minisign, and the built-in updater installs nothing that signature does not vouch for.</p>
         </article>
 
       </div>
@@ -195,7 +212,7 @@
       <div class="panel">
         <p>There is no replaycut server. The program runs on your PC, there is no account to create, nothing is measured and nothing is reported home. The one thing it asks the internet is GitHub, once a day, whether a newer release exists.</p>
         <p>A new installation is reachable from that PC alone. Opening it to your network is a switch that asks for a password first and then for the single Windows prompt that adds the firewall rule - and the same switch closes it again.</p>
-        <p>The passwords and tokens of the storages you connect live in the Windows Credential Manager, never in a file. Nothing but the clips you choose to share ever leaves your machine.</p>
+        <p>The passwords and tokens of the storages you connect live in your PC's credential store - the Windows Credential Manager, or the keyring on Linux - never in a file. Nothing but the clips you choose to share ever leaves your machine.</p>
         <a class="text-link" href="/privacy/">Read the privacy policy</a>
       </div>
     </div>
@@ -207,14 +224,14 @@
       <div class="oss">
         <div class="oss-prose">
           <p>replaycut is free software under the AGPL-3.0-only licence and is developed in the open. The Rust service and its web UI are one repository, the HTTP API is a written contract with a black-box test suite pointed at it, and every release is built by CI from the sources you can read.</p>
-          <p>Windows 10 and 11 today. Linux is being brought up in stages: the service already builds, runs and passes its tests there, and CI checks it next to Windows, while secrets, notifications, the installer and the tray icon are still to come.</p>
+          <p>Windows and Linux, both in every release and both covered by the same signed checksum file. CI builds and tests on the two of them, so what works on one is expected to work on the other; where a platform names things differently - keyring instead of Credential Manager, trash instead of recycle bin - the page follows.</p>
         </div>
         <nav class="oss-links">
           <a href="https://github.com/KallistoX/replaycut">Repository <span>the Rust service and the web UI</span></a>
           <a href="https://github.com/KallistoX/replaycut/releases">Releases <span>every version, with signed checksums</span></a>
           <a href="https://github.com/KallistoX/replaycut/blob/main/CHANGELOG.md">Changelog <span>what each release brought</span></a>
           <a href="https://github.com/KallistoX/replaycut/issues">Issues <span>bugs, ideas, questions</span></a>
-          <a href="https://github.com/KallistoX/replaycut/issues/1">Linux support <span>issue #1, the stages and where they stand</span></a>
+          <a href="https://github.com/KallistoX/replaycut/blob/main/README.md#linux">Linux <span>what the package installs and what it needs</span></a>
         </nav>
       </div>
     </div>
@@ -227,7 +244,7 @@
 
         <details open>
           <summary>What do I need?<span class="chev"></span></summary>
-          <p class="answer">Windows 10 or 11, OBS Studio with the replay buffer switched on and recording to MKV, and ffmpeg and ffprobe on your PATH. A hardware H.264 encoder is used when your graphics card has one; otherwise ffmpeg encodes on the CPU and takes a little longer.</p>
+          <p class="answer">Windows 10 or 11, or a Linux desktop. OBS Studio with the replay buffer switched on and recording to MKV, and ffmpeg and ffprobe on your PATH. A hardware H.264 encoder is used when your graphics card has one - AMF, NVENC or Quick Sync on Windows, VAAPI or NVENC on Linux - otherwise ffmpeg encodes on the CPU and takes a little longer.</p>
         </details>
 
         <details>
@@ -242,7 +259,7 @@
 
         <details>
           <summary>Does it run on Linux?<span class="chev"></span></summary>
-          <p class="answer">Not yet as something you would install. The service builds, runs and passes its tests on Linux and CI checks it on every commit, but secrets, notifications, GPU encoding through VAAPI, autostart, the installer and the tray icon are still missing. Issue #1 tracks the stages.</p>
+          <p class="answer">Yes. Since 3.2.0 every release carries a Linux package next to the Windows one: one static executable, <code>install.sh</code>, a desktop entry, and a systemd user unit if you want replaycut to start with your session. Secrets go to your keyring, notifications to your desktop, the tray icon is a StatusNotifierItem, hardware encoding runs over VAAPI, and the one-click update works the same way. One thing is missing: under Wayland nobody may press your replay hotkey for you - switch on OBS's WebSocket and replaycut asks OBS directly instead.</p>
         </details>
 
         <details>
@@ -285,9 +302,15 @@
   if (!btn || !window.fetch) return;
   var KEY = 'rc-latest';
   var known = btn.querySelector('.dl-known');
+  var links = { windows: document.getElementById('dl-windows'), linux: document.getElementById('dl-linux') };
+  var os = document.documentElement.getAttribute('data-os') || 'other';
+  var PACKAGES = { windows: /windows-x64\.zip$/, linux: /linux-x64\.zip$/ };
 
   function apply(r) {
     if (!r || !r.tag) return;
+    Object.keys(links).forEach(function (name) {
+      if (links[name] && r[name]) { links[name].href = r[name]; }
+    });
     btn.href = r.url;
     known.textContent = r.parts.join(' · ');
     btn.setAttribute('data-state', 'loaded');
@@ -307,9 +330,15 @@
   }).then(function (res) {
     return res.ok ? res.json() : Promise.reject(new Error(res.status));
   }).then(function (d) {
-    var zip = (d.assets || []).filter(function (a) { return /windows-x64\.zip$/.test(a.name); })[0];
+    var assets = d.assets || [];
+    function packageFor(name) {
+      return assets.filter(function (a) { return PACKAGES[name].test(a.name); })[0];
+    }
+    // The button offers this visitor's platform; both packages stay linked
+    // below it, for the other machine and for everyone else.
+    var mine = PACKAGES[os] ? packageFor(os) : null;
     var parts = [d.tag_name];
-    if (zip) { parts.push((zip.size / 1048576).toFixed(1) + ' MB'); }
+    if (mine) { parts.push((mine.size / 1048576).toFixed(1) + ' MB'); }
     if (d.published_at) {
       var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       var when = new Date(d.published_at);
@@ -317,9 +346,13 @@
     }
     var r = {
       tag: d.tag_name,
-      url: zip ? zip.browser_download_url : d.html_url,
+      url: mine ? mine.browser_download_url : d.html_url,
       parts: parts
     };
+    Object.keys(PACKAGES).forEach(function (name) {
+      var zip = packageFor(name);
+      if (zip) { r[name] = zip.browser_download_url; }
+    });
     apply(r);
     try { sessionStorage.setItem(KEY, JSON.stringify(r)); } catch (e) { /* ignore */ }
   }).catch(function () { /* the static link stays as it is */ });
