@@ -298,6 +298,8 @@
     if (cached && Date.now() - cached.at < 3600000) { apply(cached); return; }
   } catch (e) { /* private mode, no cache */ }
 
+  // After the page has rendered: the button is a working link until then.
+  function ask() {
   fetch('https://api.github.com/repos/KallistoX/replaycut/releases/latest', {
     headers: { 'Accept': 'application/vnd.github+json' }
   }).then(function (res) {
@@ -320,6 +322,10 @@
     apply(r);
     try { sessionStorage.setItem(KEY, JSON.stringify(r)); } catch (e) { /* ignore */ }
   }).catch(function () { /* the static link stays as it is */ });
+  }
+
+  if (document.readyState === 'complete') { ask(); }
+  else { addEventListener('load', ask); }
 })();
 </script>
 
