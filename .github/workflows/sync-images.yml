@@ -1,0 +1,78 @@
+# Keeps the pictures on the site the same as the ones in the program's
+# repository, where a workflow takes them again whenever the UI changes.
+# Here they are only re-encoded into the sizes this page asks for.
+#
+# Once a day is enough for pictures that change every few weeks; the button
+# under "Run workflow" fetches them now.
+name: Sync the screenshots
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      RAW: https://raw.githubusercontent.com/KallistoX/replaycut/main/docs/images
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+
+      - name: Fetch and re-encode
+        run: |
+          set -euo pipefail
+          mkdir -p fresh/themes assets/themes
+          curl -fsSL "$RAW/clips.jpg" -o fresh/clips.jpg
+          curl -fsSL "$RAW/clips_mobile.png" -o fresh/clips_mobile.png
+          for theme in wardogs nord catppuccin-mocha dracula gruvbox-dark catppuccin-latte; do
+            curl -fsSL "$RAW/themes/$theme.webp" -o "fresh/themes/$theme.webp"
+          done
+
+          # The hero, in the widths the page offers through srcset.
+          for w in 640 960 1280; do
+            ffmpeg -v error -y -i fresh/clips.jpg -vf "scale=$w:-2" -c:v libwebp -quality 78 "assets/clips-$w.webp"
+            ffmpeg -v error -y -i fresh/clips.jpg -vf "scale=$w:-2" -q:v 4 "assets/clips-$w.jpg"
+          done
+          # The phone, which the feature card shows at 190 to 260 CSS pixels.
+          for w in 320 560; do
+            ffmpeg -v error -y -i fresh/clips_mobile.png -vf "scale=$w:-2" -c:v libwebp -quality 82 "assets/clips-mobile-$w.webp"
+            ffmpeg -v error -y -i fresh/clips_mobile.png -vf "scale=$w:-2" -q:v 3 "assets/clips-mobile-$w.jpg"
+          done
+          cp fresh/themes/*.webp assets/themes/
+          rm -rf fresh
+
+      # The markup carries the intrinsic size of the pictures against layout
+      # shift, so a changed aspect ratio has to be noticed, not committed.
+      - name: Check the aspect ratios the page promises
+        run: |
+          set -euo pipefail
+          check() {
+            actual=$(ffprobe -v error -select_streams v -show_entries stream=width,height -of csv=p=0 "$1")
+            if [ "$actual" != "$2" ]; then
+              echo "$1 is $actual, but index.html says $2 - update the width and height attributes"
+              exit 1
+            fi
+          }
+          check assets/clips-1280.jpg 1280,800
+          check assets/clips-mobile-560.jpg 560,1212
+
+      - name: Commit what changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          if git diff --cached --quiet; then
+            echo "the pictures are unchanged"
+          else
+            git commit -m "Take the screenshots from the newest UI"
+            git push
+          fi
