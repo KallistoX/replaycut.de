@@ -293,9 +293,11 @@
     btn.setAttribute('data-state', 'loaded');
   }
 
+  // What the last visit found, so the button carries a version right away.
+  // It is only a first guess: a release published since then would make it
+  // wrong, so the answer below always overrides it.
   try {
-    var cached = JSON.parse(sessionStorage.getItem(KEY) || 'null');
-    if (cached && Date.now() - cached.at < 3600000) { apply(cached); return; }
+    apply(JSON.parse(sessionStorage.getItem(KEY) || 'null'));
   } catch (e) { /* private mode, no cache */ }
 
   // After the page has rendered: the button is a working link until then.
@@ -316,8 +318,7 @@
     var r = {
       tag: d.tag_name,
       url: zip ? zip.browser_download_url : d.html_url,
-      parts: parts,
-      at: Date.now()
+      parts: parts
     };
     apply(r);
     try { sessionStorage.setItem(KEY, JSON.stringify(r)); } catch (e) { /* ignore */ }
