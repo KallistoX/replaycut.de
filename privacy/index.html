@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy - replaycut</title>
+<meta name="description" content="replaycut runs on your own PC. There is no replaycut server, no account and no telemetry. What it stores, what leaves your machine, and what this website does.">
+<link rel="canonical" href="https://replaycut.de/privacy/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#111418">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="replaycut">
+<meta property="og:url" content="https://replaycut.de/privacy/">
+<meta property="og:title" content="Privacy - replaycut">
+<meta property="og:description" content="replaycut runs on your own PC. There is no replaycut server, no account and no telemetry.">
+<meta property="og:image" content="https://replaycut.de/assets/social.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img src="/assets/icon.svg" alt="" width="28" height="28">
+      replaycut
+    </a>
+    <nav>
+      <a class="nav-link" href="https://github.com/KallistoX/replaycut">
+        <svg class="gh" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <article class="prose">
+      <p class="lead-back"><a class="text-link" href="/">&larr; replaycut</a></p>
+
+      <h1>Privacy</h1>
+
+      <p>replaycut is a self-hosted program. It runs on your own PC, and there is no replaycut server, account or telemetry. This page exists because the integrations with YouTube, X and OneDrive ask for a privacy policy of the application that requests access.</p>
+
+      <h2>What replaycut stores, and where</h2>
+      <ul>
+        <li>Your recordings, the cuts, the previews and the shared clips stay in the folders on your PC that you configured.</li>
+        <li>Settings are a JSON file in your user profile; titles, the seen list and the share history are a database file next to it.</li>
+        <li>Credentials and OAuth refresh tokens for the integrations you connect (Nextcloud, OneDrive, S3, WebDAV, YouTube, X, Telegram, Discord, webhook) are stored in the Windows Credential Manager on your PC. They are never written to a file and never sent anywhere but to the service they belong to.</li>
+      </ul>
+
+      <h2>What leaves your PC</h2>
+      <p>Only what you trigger: a share uploads the clip you cut to the storage you chose and posts the link to the notify integrations you switched on. The optional update check asks GitHub once a day for the newest release and sends nothing about you.</p>
+
+      <h2>Google user data</h2>
+      <p>When you connect a YouTube channel, replaycut asks for the scope <code>https://www.googleapis.com/auth/youtube</code>. It uses that access only to read the channel's name for the settings card, to upload the videos you share, and to delete a video when you delete the clip in replaycut with "also remove from storage". The refresh token stays in your Credential Manager; "Disconnect" removes it. replaycut does not share Google user data with anyone, does not use it for advertising, and does not let humans read it. Its use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+      <h2>This website</h2>
+      <p>replaycut.de sets no cookies, carries no analytics and no tracker, and loads no fonts or scripts from anywhere else. Nothing you do here is stored.</p>
+      <p>One request does leave your browser: to show the version, the size and the date on the download button, the page asks the public GitHub API for the newest release. GitHub sees your IP address and your browser's user agent in that request, as it would if you clicked through to the download yourself. The answer is kept in your browser for an hour and nowhere else. Without JavaScript the button simply links to the releases page, and no request is made.</p>
+      <p>The site is hosted on GitHub Pages, which serves the files and logs the accesses; see <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>. There is no server of ours involved.</p>
+
+      <h2>Contact</h2>
+      <p>Questions go to the <a href="https://github.com/KallistoX/replaycut/issues">issue tracker</a>, or to the address in the <a href="/impressum/">Impressum</a>.</p>
+
+      <p class="updated">Last updated 8 September 2026.</p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="/">
+          <img src="/assets/icon.svg" alt="" width="28" height="28">
+          replaycut
+        </a>
+        <p class="footer-tag">A clip manager for the OBS replay buffer.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="https://github.com/KallistoX/replaycut">GitHub</a><span class="sep">&middot;</span>
+        <a href="https://github.com/KallistoX/replaycut/releases">Releases</a><span class="sep">&middot;</span>
+        <a href="https://github.com/KallistoX/replaycut/blob/main/CHANGELOG.md">Changelog</a><span class="sep">&middot;</span>
+        <a href="https://github.com/KallistoX/replaycut/issues">Issues</a><span class="sep">&middot;</span>
+        <a href="/privacy/">Privacy</a><span class="sep">&middot;</span>
+        <a href="/impressum/">Impressum</a>
+      </nav>
+    </div>
+    <p class="legal">Free software under the AGPL-3.0-only licence. &ldquo;OBS&rdquo; is a trademark of the OBS Project; replaycut is an independent tool for OBS Studio&rsquo;s replay buffer and is not affiliated with the OBS Project.</p>
+  </div>
+</footer>
+
+</body>
+</html>

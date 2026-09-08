@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>replaycut - trim OBS replay buffer clips from your phone</title>
+<meta name="description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC's GPU, share the link to Discord. Free and open source for Windows.">
+<link rel="canonical" href="https://replaycut.de/">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#111418">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="replaycut">
+<meta property="og:url" content="https://replaycut.de/">
+<meta property="og:title" content="replaycut - trim OBS replay buffer clips from your phone">
+<meta property="og:description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC's GPU, share the link to Discord. Free and open source for Windows.">
+<meta property="og:image" content="https://replaycut.de/assets/social.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="replaycut - clip manager for the OBS replay buffer. Trim on your phone, link in Discord.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="replaycut - trim OBS replay buffer clips from your phone">
+<meta name="twitter:description" content="Self-hosted clip manager for the OBS replay buffer: trim replays from your phone, encode on your gaming PC's GPU, share the link to Discord.">
+<meta name="twitter:image" content="https://replaycut.de/assets/social.png">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "replaycut",
+  "description": "Self-hosted clip manager for the OBS replay buffer: trim replays in the browser from your phone or laptop, encode on the gaming PC with ffmpeg and your GPU, upload and post the link.",
+  "url": "https://replaycut.de/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Windows 10, Windows 11",
+  "softwareVersion": "3.1.0",
+  "downloadUrl": "https://github.com/KallistoX/replaycut/releases/latest",
+  "softwareHelp": "https://github.com/KallistoX/replaycut#readme",
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "image": "https://replaycut.de/assets/social.png",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "author": { "@type": "Person", "name": "Dominic Bussemas" }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img src="/assets/icon.svg" alt="" width="28" height="28">
+      replaycut
+    </a>
+    <nav>
+      <a class="nav-link" href="https://github.com/KallistoX/replaycut">
+        <svg class="gh" viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <h1>Trim your OBS replays on your phone. Share them before the next round.</h1>
+        <p class="lead">replaycut watches the folder OBS writes its replay buffer to and turns every screen in your home into the remote control. Set the in and out points on your phone; your gaming PC cuts the range, encodes it on the GPU next to the game, uploads it and posts the link. It runs on your machine - there is no account and no server of ours.</p>
+
+        <div class="cta">
+          <a class="dl" id="dl" href="https://github.com/KallistoX/replaycut/releases/latest">
+            <span class="dl-main">Download for Windows</span>
+            <span class="dl-meta"><span class="dl-known"></span><span class="dl-unknown">Latest release on GitHub</span></span>
+          </a>
+          <div class="cta-meta">
+            <span>Windows 10/11 &middot; needs OBS and ffmpeg &middot; free and open source</span>
+            <a class="text-link" href="https://github.com/KallistoX/replaycut/releases">All releases and checksums</a>
+          </div>
+        </div>
+      </div>
+
+      <figure class="hero-media">
+        <div class="frame">
+          <picture>
+            <source srcset="/assets/clips.webp" type="image/webp">
+            <img src="/assets/clips.jpg" width="1280" height="1000" fetchpriority="high" alt="The replaycut clips page: the clip list on the left, the player with the in and out marks and the share row on the right.">
+          </picture>
+        </div>
+        <figcaption>The clips page, open on the PC.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Save the replay</h3>
+          <p>Something happens, you press your replay hotkey and OBS writes the last minutes to disk. replaycut sees the file, puts it at the top of the list and says so with a notification. With the OBS WebSocket switched on it asks OBS directly instead of pressing the key for you.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>Set in and out</h3>
+          <p>Open the clip on whatever screen is closest. Drag the two marks over the timeline, pick the audio mix, landscape or vertical, and give it a title - or take the one the page suggests.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Share</h3>
+          <p>One button cuts the range into a file of its own, encodes it on your graphics card and uploads it to the target you picked. Progress, the queue and the result stay on the page while you play on.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <h3>Post</h3>
+          <p>The link lands in Discord, Telegram or your own webhook the moment the upload is done. Every other share stays quiet and offers &ldquo;Post to &hellip;&rdquo; when you want it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>What you get</h2>
+      <div class="features">
+
+        <article class="card card--wide">
+          <div>
+            <h3>Your phone is the remote control</h3>
+            <p>The same page renders on a 27-inch monitor and on the phone in your hand: the list, the player, the marks, the share row. The PC does the work, so the phone only has to hold your thumb.</p>
+          </div>
+          <div class="frame">
+            <picture>
+              <source srcset="/assets/clips-mobile.webp" type="image/webp">
+              <img src="/assets/clips-mobile.jpg" width="560" height="1218" loading="lazy" alt="The same clips page on a phone, with the timeline and the share button.">
+            </picture>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>The gaming PC does the work</h3>
+          <p>ffmpeg encodes on your GPU - AMD AMF, NVIDIA NVENC or Intel Quick Sync - at below-normal priority with a cap on the threads it may use. The game keeps the CPU, and the service idles at 28 MB of RAM while you play.</p>
+        </article>
+
+        <article class="card">
+          <h3>Cut now, decide later</h3>
+          <p>Every share keeps its range as a cut of its own: the picture untouched, every audio track along. Render it again tomorrow with another audio mix, vertical for a Short, to another target - long after the five-minute recording went into the recycle bin.</p>
+        </article>
+
+        <article class="card">
+          <h3>Upload where you like</h3>
+          <p>Nextcloud, OneDrive, any S3 bucket or WebDAV server, YouTube - where a vertical cut becomes a Short - X, or just a file in a folder. Each one is an entry in the share menu with its own size limits.</p>
+        </article>
+
+        <article class="card">
+          <h3>The link posts itself</h3>
+          <p>Discord, Telegram or any webhook gets the title and the link the moment the quick share is done. Everything else stays quiet until you press &ldquo;Post to &hellip;&rdquo;.</p>
+        </article>
+
+        <article class="card">
+          <h3>Closed until you open it</h3>
+          <p>A new installation listens on your PC only and adds no firewall rule. Letting your phone in is one switch and one password - and after that nobody types it again: the phone asks, your PC shows the request with a four-character code, one click lets it in. Or it scans the QR code.</p>
+        </article>
+
+        <article class="card">
+          <h3>A list that empties itself</h3>
+          <p>A clip you have shared is done and out of the way, grouped by the evening it belongs to, one click to bring it back. The Activity page knows what went where, and back to the clip it came from.</p>
+        </article>
+
+        <article class="card">
+          <h3>One EXE, one click to update</h3>
+          <p>Per user, no admin rights, no service, no installer full of questions: a tray icon and a page in your browser. Every release is signed with minisign, and the built-in updater installs nothing that signature does not vouch for.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Yours, and nobody else&rsquo;s</h2>
+      <div class="panel">
+        <p>There is no replaycut server. The program runs on your PC, there is no account to create, nothing is measured and nothing is reported home. The one thing it asks the internet is GitHub, once a day, whether a newer release exists.</p>
+        <p>A new installation is reachable from that PC alone. Opening it to your network is a switch that asks for a password first and then for the single Windows prompt that adds the firewall rule - and the same switch closes it again.</p>
+        <p>The passwords and tokens of the storages you connect live in the Windows Credential Manager, never in a file. Nothing but the clips you choose to share ever leaves your machine.</p>
+        <a class="text-link" href="/privacy/">Read the privacy policy</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Open source</h2>
+      <div class="oss">
+        <div class="oss-prose">
+          <p>replaycut is free software under the AGPL-3.0-only licence and is developed in the open. The Rust service and its web UI are one repository, the HTTP API is a written contract with a black-box test suite pointed at it, and every release is built by CI from the sources you can read.</p>
+          <p>Windows 10 and 11 today. Linux is being brought up in stages: the service already builds, runs and passes its tests there, and CI checks it next to Windows, while secrets, notifications, the installer and the tray icon are still to come.</p>
+        </div>
+        <nav class="oss-links">
+          <a href="https://github.com/KallistoX/replaycut">Repository <span>the Rust service and the web UI</span></a>
+          <a href="https://github.com/KallistoX/replaycut/releases">Releases <span>every version, with signed checksums</span></a>
+          <a href="https://github.com/KallistoX/replaycut/blob/main/CHANGELOG.md">Changelog <span>what each release brought</span></a>
+          <a href="https://github.com/KallistoX/replaycut/issues">Issues <span>bugs, ideas, questions</span></a>
+          <a href="https://github.com/KallistoX/replaycut/issues/1">Linux support <span>issue #1, the stages and where they stand</span></a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+
+        <details open>
+          <summary>What do I need?<span class="chev"></span></summary>
+          <p class="answer">Windows 10 or 11, OBS Studio with the replay buffer switched on and recording to MKV, and ffmpeg and ffprobe on your PATH. A hardware H.264 encoder is used when your graphics card has one; otherwise ffmpeg encodes on the CPU and takes a little longer.</p>
+        </details>
+
+        <details>
+          <summary>Does it work without any cloud?<span class="chev"></span></summary>
+          <p class="answer">Yes, and it stays useful. Pick &ldquo;file only&rdquo; and a share is a finished MP4 in a folder, with &ldquo;Open folder&rdquo; and &ldquo;Copy file&rdquo; on the PC and &ldquo;Download&rdquo; on the phone the page is open on. Every storage and every notification is optional.</p>
+        </details>
+
+        <details>
+          <summary>My phone cannot play the recording.<span class="chev"></span></summary>
+          <p class="answer">That is AV1, which an iPhone cannot decode in the browser. The player offers &ldquo;Make a playable preview&rdquo; - a 720p H.264 copy made on your PC in a few seconds - and recording in H.264 avoids it altogether.</p>
+        </details>
+
+        <details>
+          <summary>Does it run on Linux?<span class="chev"></span></summary>
+          <p class="answer">Not yet as something you would install. The service builds, runs and passes its tests on Linux and CI checks it on every commit, but secrets, notifications, GPU encoding through VAAPI, autostart, the installer and the tray icon are still missing. Issue #1 tracks the stages.</p>
+        </details>
+
+        <details>
+          <summary>Windows warns me about the download.<span class="chev"></span></summary>
+          <p class="answer">SmartScreen does that with any executable it has not seen thousands of times; &ldquo;More info&rdquo;, then &ldquo;Run anyway&rdquo;. Every release ships a SHA256SUMS file signed with the maintainer&rsquo;s minisign key, so you can check what you downloaded - and the built-in updater installs nothing else.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="/">
+          <img src="/assets/icon.svg" alt="" width="28" height="28">
+          replaycut
+        </a>
+        <p class="footer-tag">A clip manager for the OBS replay buffer.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="https://github.com/KallistoX/replaycut">GitHub</a><span class="sep">&middot;</span>
+        <a href="https://github.com/KallistoX/replaycut/releases">Releases</a><span class="sep">&middot;</span>
+        <a href="https://github.com/KallistoX/replaycut/blob/main/CHANGELOG.md">Changelog</a><span class="sep">&middot;</span>
+        <a href="https://github.com/KallistoX/replaycut/issues">Issues</a><span class="sep">&middot;</span>
+        <a href="/privacy/">Privacy</a><span class="sep">&middot;</span>
+        <a href="/impressum/">Impressum</a>
+      </nav>
+    </div>
+    <p class="legal">Free software under the AGPL-3.0-only licence. &ldquo;OBS&rdquo; is a trademark of the OBS Project; replaycut is an independent tool for OBS Studio&rsquo;s replay buffer and is not affiliated with the OBS Project.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('dl');
+  if (!btn || !window.fetch) return;
+  var KEY = 'rc-latest';
+  var known = btn.querySelector('.dl-known');
+
+  function apply(r) {
+    if (!r || !r.tag) return;
+    btn.href = r.url;
+    known.textContent = r.parts.join(' · ');
+    btn.setAttribute('data-state', 'loaded');
+  }
+
+  try {
+    var cached = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+    if (cached && Date.now() - cached.at < 3600000) { apply(cached); return; }
+  } catch (e) { /* private mode, no cache */ }
+
+  fetch('https://api.github.com/repos/KallistoX/replaycut/releases/latest', {
+    headers: { 'Accept': 'application/vnd.github+json' }
+  }).then(function (res) {
+    return res.ok ? res.json() : Promise.reject(new Error(res.status));
+  }).then(function (d) {
+    var zip = (d.assets || []).filter(function (a) { return /windows-x64\.zip$/.test(a.name); })[0];
+    var parts = [d.tag_name];
+    if (zip) { parts.push((zip.size / 1048576).toFixed(1) + ' MB'); }
+    if (d.published_at) {
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      var when = new Date(d.published_at);
+      parts.push(when.getDate() + ' ' + months[when.getMonth()] + ' ' + when.getFullYear());
+    }
+    var r = {
+      tag: d.tag_name,
+      url: zip ? zip.browser_download_url : d.html_url,
+      parts: parts,
+      at: Date.now()
+    };
+    apply(r);
+    try { sessionStorage.setItem(KEY, JSON.stringify(r)); } catch (e) { /* ignore */ }
+  }).catch(function () { /* the static link stays as it is */ });
+})();
+</script>
+
+</body>
+</html>
