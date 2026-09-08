@@ -390,9 +390,13 @@ figcaption {
 }
 .footer-nav a { color: var(--fg-muted); }
 .footer-nav a:hover { color: var(--accent); }
-.footer-nav .sep { color: var(--line-strong); }
-.legal {
+.footer-nav a:not(:first-child)::before {
+  content: "\00b7";
   color: var(--fg-faint);
+  margin-right: var(--s-3);
+}
+.legal {
+  color: var(--fg-muted);
   font-size: 13px;
   max-width: 92ch;
 }
@@ -434,7 +438,7 @@ picture { display: block; }
   font-style: normal;
   line-height: 1.6;
 }
-.prose .updated { margin-top: var(--s-8); color: var(--fg-faint); font-size: 13px; }
+.prose .updated { margin-top: var(--s-8); color: var(--fg-muted); font-size: 13px; }
 .prose .lead-back { margin-bottom: var(--s-6); }
 
 .notfound { text-align: center; padding: var(--s-24) 0; }

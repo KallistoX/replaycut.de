@@ -48,14 +48,14 @@
       <ul>
         <li>Your recordings, the cuts, the previews and the shared clips stay in the folders on your PC that you configured.</li>
         <li>Settings are a JSON file in your user profile; titles, the seen list and the share history are a database file next to it.</li>
-        <li>Credentials and OAuth refresh tokens for the integrations you connect (Nextcloud, OneDrive, S3, WebDAV, YouTube, X, Telegram, Discord, webhook) are stored in the Windows Credential Manager on your PC. They are never written to a file and never sent anywhere but to the service they belong to.</li>
+        <li>Credentials and OAuth refresh tokens for the integrations you connect (Nextcloud, OneDrive, S3, WebDAV, YouTube, X, Telegram, Discord, webhook) are stored in your PC's credential store: the Windows Credential Manager, or the keyring behind the Secret Service on Linux. They are never written to a file and never sent anywhere but to the service they belong to.</li>
       </ul>
 
       <h2>What leaves your PC</h2>
       <p>Only what you trigger: a share uploads the clip you cut to the storage you chose and posts the link to the notify integrations you switched on. The optional update check asks GitHub once a day for the newest release and sends nothing about you.</p>
 
       <h2>Google user data</h2>
-      <p>When you connect a YouTube channel, replaycut asks for the scope <code>https://www.googleapis.com/auth/youtube</code>. It uses that access only to read the channel's name for the settings card, to upload the videos you share, and to delete a video when you delete the clip in replaycut with "also remove from storage". The refresh token stays in your Credential Manager; "Disconnect" removes it. replaycut does not share Google user data with anyone, does not use it for advertising, and does not let humans read it. Its use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+      <p>When you connect a YouTube channel, replaycut asks for the scope <code>https://www.googleapis.com/auth/youtube</code>. It uses that access only to read the channel's name for the settings card, to upload the videos you share, and to delete a video when you delete the clip in replaycut with "also remove from storage". The refresh token stays in your credential store; "Disconnect" removes it. replaycut does not share Google user data with anyone, does not use it for advertising, and does not let humans read it. Its use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 
       <h2>This website</h2>
       <p>replaycut.de sets no cookies, carries no analytics and no tracker, and loads no fonts or scripts from anywhere else. Nothing you do here is stored.</p>
@@ -81,11 +81,11 @@
         <p class="footer-tag">A clip manager for the OBS replay buffer.</p>
       </div>
       <nav class="footer-nav">
-        <a href="https://github.com/KallistoX/replaycut">GitHub</a><span class="sep">&middot;</span>
-        <a href="https://github.com/KallistoX/replaycut/releases">Releases</a><span class="sep">&middot;</span>
-        <a href="https://github.com/KallistoX/replaycut/blob/main/CHANGELOG.md">Changelog</a><span class="sep">&middot;</span>
-        <a href="https://github.com/KallistoX/replaycut/issues">Issues</a><span class="sep">&middot;</span>
-        <a href="/privacy/">Privacy</a><span class="sep">&middot;</span>
+        <a href="https://github.com/KallistoX/replaycut">GitHub</a>
+        <a href="https://github.com/KallistoX/replaycut/releases">Releases</a>
+        <a href="https://github.com/KallistoX/replaycut/blob/main/CHANGELOG.md">Changelog</a>
+        <a href="https://github.com/KallistoX/replaycut/issues">Issues</a>
+        <a href="/privacy/">Privacy</a>
         <a href="/impressum/">Impressum</a>
       </nav>
     </div>
