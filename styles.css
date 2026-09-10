@@ -425,6 +425,11 @@ picture { display: block; }
   margin-top: var(--s-8);
   margin-bottom: var(--s-3);
 }
+.prose h3 {
+  font-size: 16px;
+  margin-top: var(--s-6);
+  margin-bottom: var(--s-2);
+}
 .prose p, .prose li { color: var(--fg-muted); }
 .prose p + p { margin-top: var(--s-4); }
 .prose h1 + p { margin-top: var(--s-6); }

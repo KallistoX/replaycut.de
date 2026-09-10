@@ -55,7 +55,44 @@
       <p>Only what you trigger: a share uploads the clip you cut to the storage you chose and posts the link to the notify integrations you switched on. The optional update check asks GitHub once a day for the newest release and sends nothing about you.</p>
 
       <h2>Google user data</h2>
-      <p>When you connect a YouTube channel, replaycut asks for the scope <code>https://www.googleapis.com/auth/youtube</code>. It uses that access only to read the channel's name for the settings card, to upload the videos you share, and to delete a video when you delete the clip in replaycut with "also remove from storage". The refresh token stays in your credential store; "Disconnect" removes it. replaycut does not share Google user data with anyone, does not use it for advertising, and does not let humans read it. Its use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+      <p>This section is about the YouTube integration alone. It applies only once you switch that integration on and connect a channel; until then replaycut touches no Google user data at all. When you click <strong>Connect YouTube</strong>, replaycut asks your Google account for one OAuth scope, <code>https://www.googleapis.com/auth/youtube</code>, and for nothing else.</p>
+
+      <h3>What Google user data replaycut accesses</h3>
+      <ul>
+        <li>The <strong>title of your YouTube channel</strong>, read with <code>channels.list</code> (<code>mine=true</code>) when you connect, so the settings page can show which channel a share would go to.</li>
+        <li>The <strong>video id and link of the videos replaycut itself uploads</strong> for you, returned by <code>videos.insert</code>.</li>
+        <li>An <strong>OAuth refresh token and access token</strong> for your Google account, issued when you grant the access.</li>
+      </ul>
+      <p>Nothing else: replaycut does not read the other videos on your channel, and no comments, subscribers, playlists, analytics, e-mail address or Google profile data.</p>
+
+      <h3>How replaycut uses Google user data</h3>
+      <ul>
+        <li>The channel title is shown to you, on your own screen, on the settings page (&ldquo;Connected as &lt;channel&gt;&rdquo;).</li>
+        <li><code>videos.insert</code> uploads the clip you chose to share to that channel, with the privacy (unlisted, private or public), title and description you set.</li>
+        <li><code>videos.delete</code> removes such a video again &ndash; only when you delete the clip in replaycut and tick &ldquo;also remove the uploaded copies&rdquo;.</li>
+        <li>The tokens authenticate exactly those calls against Google&rsquo;s API.</li>
+      </ul>
+      <p>Every one of these calls happens because you clicked: replaycut runs nothing on a schedule and nothing in the background. replaycut does not use Google user data for advertising or profiling, does not sell it, does not use it for creditworthiness or lending decisions, and does not use it to develop, improve or train generalized artificial intelligence or machine learning models.</p>
+
+      <h3>Who replaycut shares Google user data with</h3>
+      <p>Nobody. There is no replaycut server and no replaycut account, so there is nowhere for the data to go: the program on your PC talks to Google directly. Google user data is not transferred, sold or disclosed to us or to any third party, and no human being other than you ever sees it. If you switch on a notify integration such as Discord, what it posts is the link of the share you just made &ndash; the link you would otherwise paste yourself &ndash; and nothing else. replaycut&rsquo;s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+      <h3>How replaycut protects Google user data</h3>
+      <ul>
+        <li>The refresh token is stored in your operating system&rsquo;s credential store &ndash; the Windows Credential Manager, or the keyring behind the Secret Service on Linux &ndash; as the entry <code>replaycut/youtube</code>. It is never written to a settings file, a log file or the database.</li>
+        <li>The access token exists only in the memory of the running program and expires after about an hour.</li>
+        <li>Every request to Google goes over HTTPS with TLS.</li>
+        <li>replaycut&rsquo;s own interface listens on your PC and, out of the box, accepts connections from that PC only. Opening it to your network is a switch you have to throw, and it turns on a device login with a password.</li>
+      </ul>
+
+      <h3>How long replaycut keeps Google user data, and how to delete it</h3>
+      <ul>
+        <li>The <strong>refresh token</strong> stays in the credential store until it is removed, so that you do not have to sign in again every few days. <strong>&ldquo;Disconnect&rdquo; on the YouTube card deletes it immediately</strong>, and so does <code>replaycut uninstall --purge</code>.</li>
+        <li>The <strong>channel title</strong> is kept only as the user name of that same credential entry and goes with it.</li>
+        <li>The <strong>video ids and links</strong> of your shares live in replaycut&rsquo;s database on your PC as long as the clip&rsquo;s history entry does; deleting the clip in replaycut deletes them with it.</li>
+        <li>You can revoke replaycut&rsquo;s access at any time and independently of replaycut, at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. The uploaded video is yours: it stays on your channel until you delete it, in replaycut or in YouTube Studio.</li>
+      </ul>
+      <p>There is no copy anywhere else &ndash; no backup of ours, no analytics, no server.</p>
 
       <h2>This website</h2>
       <p>replaycut.de sets no cookies, carries no analytics and no tracker, and loads no fonts or scripts from anywhere else. Nothing you do here is stored.</p>
@@ -65,7 +102,7 @@
       <h2>Contact</h2>
       <p>Questions go to the <a href="https://github.com/KallistoX/replaycut/issues">issue tracker</a>, or to the address in the <a href="/impressum/">Impressum</a>.</p>
 
-      <p class="updated">Last updated 8 September 2026.</p>
+      <p class="updated">Last updated 10 September 2026.</p>
     </article>
   </div>
 </main>
